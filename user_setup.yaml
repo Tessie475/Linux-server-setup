@@ -1,0 +1,48 @@
+- name: Set up remote server
+  hosts: webserver #defined in the hosts file
+  become: yes
+  tasks:
+    - name: Create directory /johns-dir directory exists
+      file:
+        path: /johns-dir
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Create user John
+      user:
+        name: john
+        uid: 1234
+        home: /jogns-dir/john
+        skeleton: /etc/skel
+        shell: /bin/bash
+
+    - name: Create nice-script.sh in skeleton directory
+      copy:
+        content: |
+          #!/bin/bash
+          df -h
+        dest: /etc/skel/nice-script.sh
+        mode: '0755'
+
+    - name: Grant john permission to run 'whoami' with sudo without a password
+      lineinfile:
+        path: /etc/sudoers
+        line: 'john ALL=(ALL) NOPASSWD: /usr/bin/whoami'
+        validate: 'visudo -cf %s'
+
+    - name: Install required packages
+      apt:
+        name:
+          - tmux
+          - vim
+        state: present
+
+    - name: Install Terraform CLI
+      unarchive:
+        src:  https://releases.hashicorp.com/terraform/1.0.8/terraform_1.6.1_linux_amd64.zip
+        dest: /usr/local/bin/
+        remote_src: yes
+        creates: /usr/local/bin/terraform
+      become: yes
