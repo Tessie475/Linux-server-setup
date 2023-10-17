@@ -71,24 +71,8 @@ resource "aws_security_group" "my-project-sg" {
 }
 
 # Create an EC2 instance within the subnet
-data "aws_ami" "latest-amazon-linux-image" {
-    most_recent = true
-    owners = ["amazon"]
-    filter {
-        name = "name"
-        values = ["amzn2-ami-hvm-*-x86_64-gp2"]
-    }
-    filter {
-        name = "virtualization-type"
-        values = ["hvm"]
-    }
-}
-    output "aws_ami_id" {
-        value = data.aws_ami.latest-amazon-linux-image.id
-    }
-
 resource "aws_instance" "my_project_server" {
-  ami = data.aws_ami.latest-amazon-linux-image.id
+  ami = "ami-053b0d53c279acc90"
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.my_project_subnet.id
   vpc_security_group_ids = [aws_security_group.my-project-sg.id]
@@ -97,4 +81,3 @@ resource "aws_instance" "my_project_server" {
   associate_public_ip_address = true
   key_name = "linux-setup-project"
 }
-
