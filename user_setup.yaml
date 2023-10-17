@@ -1,5 +1,5 @@
 - name: Set up remote server
-  hosts: webserver #defined in the hosts file
+  hosts: webserver
   become: yes
   tasks:
     - name: Create directory /johns-dir directory exists
@@ -14,7 +14,7 @@
       user:
         name: john
         uid: 1234
-        home: /jogns-dir/john
+        home: /johns-dir/john  # Corrected the typo here
         skeleton: /etc/skel
         shell: /bin/bash
 
@@ -39,10 +39,14 @@
           - vim
         state: present
 
+    - name: Ensure unzip is installed
+      apt:
+        name: unzip
+        state: present
+
     - name: Install Terraform CLI
       unarchive:
-        src:  https://releases.hashicorp.com/terraform/1.0.8/terraform_1.6.1_linux_amd64.zip
+        src: https://releases.hashicorp.com/terraform/1.6.1/terraform_1.6.1_linux_amd64.zip
         dest: /usr/local/bin/
         remote_src: yes
         creates: /usr/local/bin/terraform
-      become: yes
