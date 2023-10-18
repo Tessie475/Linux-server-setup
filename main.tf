@@ -1,6 +1,7 @@
 variable vpc_cidr_block {}
 variable subnet_cidr_block {}
 variable avail_zone {}
+variable my_ip {}
 
 
 # Create a VPC
@@ -46,7 +47,7 @@ resource "aws_security_group" "my-project-sg" {
     from_port   = 2222
     to_port     = 2222
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [var.my_ip]
   }
 
   egress {
