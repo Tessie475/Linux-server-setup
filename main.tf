@@ -7,7 +7,7 @@ module "subnet" {
   source             = "./modules/subnet"
   subnet_cidr_block  = var.subnet_cidr_block
   vpc_id             = module.vpc.vpc_id
-  avail_zone  = var.avail_zone
+  avail_zone         = var.avail_zone
 }
 
 module "ec2_instance" {
