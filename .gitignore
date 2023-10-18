@@ -7,4 +7,5 @@
 
 .terraform.lock.hcl
 
-hosts
+#tf variable file
+terraform.tfvars
