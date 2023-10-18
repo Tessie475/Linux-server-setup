@@ -1,27 +1,18 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
+variable vpc_cidr_block {}
+variable subnet_cidr_block {}
+variable avail_zone {}
 
-# Configure the AWS Provider
-provider "aws" {
-  region = "us-east-1"
-}
 
 # Create a VPC
 resource "aws_vpc" "my_project_vpc" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.vpc_cidr_block
 }
 
 # Create a subnet within the VPC
 resource "aws_subnet" "my_project_subnet" {
   vpc_id     = aws_vpc.my_project_vpc.id
-  cidr_block = "10.0.1.0/24"
-  availability_zone = "us-east-1a"
+  cidr_block = var.subnet_cidr_block
+  availability_zone = var.avail_zone
 }
 
 # Create an internet gateway
@@ -48,12 +39,12 @@ resource "aws_default_route_table" "main-rtb" {
 # Configure instance to allow ingress traffic 
 resource "aws_security_group" "my-project-sg" {
   name        = "my-project-sg"
-  description = "Allows ingress traffic on port 22"
+  description = "Allows ingress traffic on port 2222"
   vpc_id      = aws_vpc.my_project_vpc.id
 
   ingress {
-    from_port   = 22
-    to_port     = 22
+    from_port   = 2222
+    to_port     = 2222
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -76,7 +67,7 @@ resource "aws_instance" "my_project_server" {
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.my_project_subnet.id
   vpc_security_group_ids = [aws_security_group.my-project-sg.id]
-  availability_zone = "us-east-1a"
+  availability_zone = var.avail_zone
 
   associate_public_ip_address = true
   key_name = "linux-setup-project"
