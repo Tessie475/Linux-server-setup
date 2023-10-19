@@ -8,6 +8,43 @@ This repository contains an Ansible playbook designed to set up a Ubuntu server 
 
 This project provides a robust AWS infrastructure setup using Terraform. Below is a quick overview of the features:
 
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.0 |
+
+## Providers
+
+No providers.
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_ec2_instance"></a> [ec2\_instance](#module\_ec2\_instance) | ./modules/ec2_instance | n/a |
+| <a name="module_subnet"></a> [subnet](#module\_subnet) | ./modules/subnet | n/a |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | ./modules/vpc | n/a |
+
+## Resources
+
+No resources.
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_avail_zone"></a> [avail\_zone](#input\_avail\_zone) | The availability zone | `string` | n/a | yes |
+| <a name="input_my_ip"></a> [my\_ip](#input\_my\_ip) | My IP Address | `string` | n/a | yes |
+| <a name="input_subnet_cidr_block"></a> [subnet\_cidr\_block](#input\_subnet\_cidr\_block) | The subnet CIDR BLOCK | `string` | n/a | yes |
+| <a name="input_vpc_cidr_block"></a> [vpc\_cidr\_block](#input\_vpc\_cidr\_block) | VPC CIDR block | `string` | n/a | yes |
+
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->
+
 ### Configurable Parameters:
 
 - **VPC CIDR Block**: Define the CIDR block for your VPC using `vpc_cidr_block`.
