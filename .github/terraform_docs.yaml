@@ -1,44 +1,21 @@
-name: Terraform and Markdown Checks
+name: Generate Terraform Docs
 
 on:
   push:
     paths:
       - '**.tf'
       - '**.md'
-      - '.github/workflows/terraform_checks.yaml'
+      - '.github/workflows/terraform_docs.yaml'
     branches:
       - main
   pull_request:
     paths:
       - '**.tf'
       - '**.md'
-      - '.github/workflows/terraform_checks.yaml'
+      - '.github/workflows/terraform_docs.yaml'
 
 jobs:
-  lint-and-format:
-    name: Lint and Format Checks
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with: 
-          token: ${{ secrets.gt_bot_auth }}
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-
-      - name: Terraform Format
-        run: terraform fmt -check
-
-      - name: TFLint
-        uses: reviewdog/action-tflint@v1
-        with:
-          github_token: ${{ secrets.review_dog_tflint }}
-
-      - name: Markdown Lint
-        uses: avto-dev/markdown-lint@v1
-
-  docs:
+   docs:
     name: Generate Terraform Docs
     runs-on: ubuntu-latest
     steps:
