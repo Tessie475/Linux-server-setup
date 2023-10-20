@@ -34,4 +34,3 @@ resource "aws_instance" "my_project_server" {
   associate_public_ip_address = true
   key_name                    = "linux-setup-project"
 }
-
