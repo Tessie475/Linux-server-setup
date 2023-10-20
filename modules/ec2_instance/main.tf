@@ -1,4 +1,4 @@
-# Configure instance to allow ingress traffic 
+# Configure the instance to allow ingress traffic 
 resource "aws_security_group" "my-project-sg" {
   name        = "my-project-sg"
   description = "Allows ingress traffic on port 2222"
