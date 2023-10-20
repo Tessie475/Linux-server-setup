@@ -64,14 +64,14 @@ jobs:
       - name: Generate Docs for vpc
         run: terraform-docs markdown table --output-template "<!-- BEGIN_TF_DOCS -->\n{{ .Content }}\n<!-- END_TF_DOCS -->" modules/vpc
 
-      - name: Generate Docs for Root Directory 
-        run: terraform-docs markdown table -c .terraform-docs.yml --output-template "<!-- BEGIN_TF_DOCS -->\n{{ .Content }}\n<!-- END_TF_DOCS -->" .
+      # - name: Generate Docs for Root Directory 
+      #   run: terraform-docs markdown table -c .terraform-docs.yml --output-template "<!-- BEGIN_TF_DOCS -->\n{{ .Content }}\n<!-- END_TF_DOCS -->" .
 
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add ./modules/ec2_instance ./modules/subnet ./modules/vpc .
+          git add ./modules/ec2_instance ./modules/subnet ./modules/vpc 
           git commit -m "Automated documentation update" || echo "No changes to commit"
           git push
         env:
