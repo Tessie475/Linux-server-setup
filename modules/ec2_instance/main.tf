@@ -18,19 +18,19 @@ resource "aws_security_group" "my-project-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-    tags = {
+  tags = {
     Name = "allow_all_ssh"
   }
 }
 
 # Create an EC2 instance within the subnet
 resource "aws_instance" "my_project_server" {
-  ami = "ami-053b0d53c279acc90"
-  instance_type = "t2.micro"
-  subnet_id     = var.subnet_id
+  ami                    = "ami-053b0d53c279acc90"
+  instance_type          = "t2.micro"
+  subnet_id              = var.subnet_id
   vpc_security_group_ids = [aws_security_group.my-project-sg.id]
-  availability_zone = var.avail_zone
+  availability_zone      = var.avail_zone
 
   associate_public_ip_address = true
-  key_name = "linux-setup-project"
+  key_name                    = "linux-setup-project"
 }
