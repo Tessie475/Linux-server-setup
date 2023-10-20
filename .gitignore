@@ -9,3 +9,7 @@
 
 #tf variable file
 terraform.tfvars
+
+#terraform binary file and license
+terraform-docs-v0.16.0-linux-amd64.tar.gz
+LICENSE
