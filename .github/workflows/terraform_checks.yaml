@@ -48,7 +48,7 @@ jobs:
       - name: Install terraform-docs
         run: |
           wget https://github.com/terraform-docs/terraform-docs/releases/download/v0.16.0/terraform-docs-v0.16.0-linux-amd64.tar.gz
-          tar -xvf terraform-docs-v0.15.0-linux-amd64.tar.gz
+          tar -xvf terraform-docs-v0.16.0-linux-amd64.tar.gz
           sudo mv terraform-docs /usr/local/bin/
 
       - name: Generate Docs for ec2_instance
