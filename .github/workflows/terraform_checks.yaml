@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with: 
+          token: ${{ secrets.gt_bot_auth}}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
@@ -70,5 +72,6 @@ jobs:
           git add ./modules/ec2_instance ./modules/subnet ./modules/vpc .
           git commit -m "Automated documentation update" || echo "No changes to commit"
           git push
-
+        env:
+          GT_BOT_AUTH: ${{ secrets.gt_bot_auth }}
 
