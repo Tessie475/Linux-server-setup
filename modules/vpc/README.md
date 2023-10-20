@@ -1,10 +1,3 @@
-# VPC
-
-## AWS VPC Setup with Internet Connectivity
-
-This module focuses on setting up a foundational network infrastructure for the project in AWS. It creates a Virtual Private Cloud (VPC), establishing an isolated environment for resources. Additionally, to facilitate external communication, it provisions an internet gateway and a default route table, ensuring resources within the VPC can access the 
-
-<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 No requirements.
@@ -38,4 +31,3 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
-<!-- END_TF_DOCS -->
