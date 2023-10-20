@@ -1,10 +1,3 @@
-# ec2_instance
-
-## AWS EC2 Instance with Custom Security Group
-
-This module provisions an AWS EC2 instance within a specified VPC and subnet. Accompanied by a custom security group, it ensures controlled ingress traffic, specifically allowing TCP traffic on port 2222 from a designated IP. While ingress is restricted, egress is configured to permit all outbound traffic....
-
-<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 No requirements.
@@ -38,4 +31,3 @@ No modules.
 ## Outputs
 
 No outputs.
-<!-- END_TF_DOCS -->

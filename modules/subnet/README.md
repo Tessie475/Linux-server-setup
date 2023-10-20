@@ -1,10 +1,3 @@
-# subnet
-
-## AWS Subnet Configuration for My Project
-
-This module is dedicated to provisioning a subnet within a specified AWS VPC. By creating a designated network segment, it ensures that resources within this subnet can communicate efficiently and are organized based on the project's network architecture requirements.
-
-<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 No requirements.
@@ -38,4 +31,3 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_subnet_id"></a> [subnet\_id](#output\_subnet\_id) | n/a |
-<!-- END_TF_DOCS -->
