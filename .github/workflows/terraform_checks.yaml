@@ -5,14 +5,14 @@ on:
     paths:
       - '**.tf'
       - '**.md'
-      - '.github/workflows/terraform_docs.yml'
+      - '.github/workflows/terraform_checks.yaml'
     branches:
       - main
   pull_request:
     paths:
       - '**.tf'
       - '**.md'
-      - '.github/workflows/terraform_docs.yml'
+      - '.github/workflows/terraform_checks.yaml'
 
 jobs:
   lint-and-format:
